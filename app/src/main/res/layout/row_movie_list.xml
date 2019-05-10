@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+    <ImageView
+            android:layout_width="100dp"
+            android:layout_height="160dp" app:srcCompat="@android:color/transparent"
+            android:id="@+id/movieItemImg" android:layout_marginTop="5dp" android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp" android:layout_marginBottom="5dp"/>
+    <TextView
+            android:text="Title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:id="@+id/movieItemTitle"
+            android:layout_toEndOf="@+id/movieItemImg" android:layout_marginStart="10dp" android:textSize="18sp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="5dp" android:layout_alignTop="@+id/movieItemImg" android:layout_marginTop="0dp"/>
+    <TextView
+            android:text="Overview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" android:id="@+id/movieItemOverview" android:layout_marginStart="0dp"
+            android:layout_alignStart="@+id/movieItemTitle" android:layout_marginTop="10dp"
+            android:layout_below="@+id/movieItemTitle"
+            android:layout_marginEnd="0dp" android:layout_alignEnd="@+id/movieItemTitle"
+            android:ellipsize="end" android:maxLines="4" android:layout_marginBottom="0dp"
+            android:layout_alignBottom="@+id/movieItemImg" android:textSize="10sp"/>
+    <ImageButton
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" android:id="@+id/btnPlay"
+            android:layout_marginBottom="60dp" android:layout_alignBottom="@+id/movieItemImg"
+            android:layout_marginEnd="30dp" android:layout_alignEnd="@+id/movieItemImg"
+            android:layout_alignTop="@+id/movieItemImg" android:layout_marginTop="60dp"
+            android:layout_marginStart="30dp" android:layout_alignStart="@+id/movieItemImg"
+            android:scaleType="fitCenter" android:background="@android:color/transparent"
+            android:src="@drawable/ic_play_button" android:visibility="invisible"/>
+</RelativeLayout>
