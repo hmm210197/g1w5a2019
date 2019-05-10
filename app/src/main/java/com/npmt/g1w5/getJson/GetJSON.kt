@@ -13,6 +13,7 @@ class GetJSON(val context: Context?, val url : String) {
    fun getJsonFromApi():ArrayList<Movie>{
 
        //   get json from url
+       Log.i("url: ",url)
        var jsonString : String? = null
        val client = OkHttpClient()
        val request = Request.Builder().url(url).build()
@@ -21,13 +22,17 @@ class GetJSON(val context: Context?, val url : String) {
                Log.i("load fail",e.stackTrace.toString())
            }
            override fun onResponse(call: Call, response: Response) {
+               Log.i("response","")
                if(response.isSuccessful){
                    //  take json string from api when connection success. otherwise take it from local file in assetts
-                   jsonString = response.body()?.string()
+                   jsonString = response.body()!!.string()
                }
            }
        })
-       if(jsonString == null){jsonString = context?.assets?.open("movies.json")?.bufferedReader().use{it?.readText()}}
+       if(jsonString == null){
+           Log.i("Null json string","Null!!!!!")
+           jsonString = context?.assets?.open("movies.json")?.bufferedReader().use{it?.readText()}
+       }
 
        // parse json to class
        val movies = Gson().fromJson(jsonString, General::class.java)
