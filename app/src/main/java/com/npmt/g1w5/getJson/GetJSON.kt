@@ -16,6 +16,8 @@ class GetJSON{
 
    fun getJsonFromApi(url : String,recycler : RecyclerView, activity : FragmentActivity?,context : Context?){
 
+       var movie : ArrayList<Movie> = ArrayList()
+
        //   get json from url
        lateinit var jsonString : String
        val client = OkHttpClient()
@@ -28,7 +30,6 @@ class GetJSON{
                if(response.isSuccessful){
                    jsonString = response.body()!!.string()
                    val movies = Gson().fromJson(jsonString, General::class.java)
-                   var movie : ArrayList<Movie> = ArrayList()
                    movies.results.forEach{ movie.add(Movie(it.overview,it.poster_path,it.release_date,it.title,it.video,it.vote_average)) }
 
                    activity?.runOnUiThread(
@@ -38,15 +39,12 @@ class GetJSON{
                            recycler.adapter = adapter
                        }
                    )
-
                }else{
-//                   jsonString = context?.assets?.open("movies.json")?.bufferedReader().use{it!!.readText()}
-                   Log.i("fail","fail")
+                   jsonString = context?.assets?.open("movies.json")?.bufferedReader().use{it!!.readText()}
                    throw IOException("Unexpected code " + response)
                }
            }
        })
-
    }
 
 }

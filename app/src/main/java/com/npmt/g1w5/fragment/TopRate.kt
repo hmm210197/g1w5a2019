@@ -19,7 +19,7 @@ class TopRate : Fragment(){
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
-        val url = "https://api.themoviedb.org/3/movie/top_rate?api_key=7519cb3f829ecd53bd9b7007076dbe23"
+        val url = "https://api.themoviedb.org/3/movie/top_rated?api_key=7519cb3f829ecd53bd9b7007076dbe23"
         GetJSON().getJsonFromApi(url,rcMovies,this.activity,this.context)
     }
 }
